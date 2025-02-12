@@ -8,6 +8,6 @@ let integerNumber = 4;
 let stringNumber = "" + integerNumber;
 let result = integerNumber + +(stringNumber + stringNumber) + +(stringNumber + stringNumber + stringNumber);
 console.log(result);
-
+// another option
 let result2 = integerNumber + +("" + integerNumber + integerNumber) + +("" + integerNumber + integerNumber + integerNumber);
 console.log(result);
