@@ -17,5 +17,20 @@
  * 100 - делится на 5
  */
 let fizzBuzzResult = '';
-
+let inputNumber = 100;
+let even3Text = '- делится на 3';
+let even5Text = '- делится на 5';
+let even3And5Text = '- делится и на 3 и на 5';
+for (let i = 1; i <= inputNumber; i++){
+  if (i % 3 == 0 && i % 5 == 0){
+      fizzBuzzResult += `${i} ${even3And5Text}`;
+    } else if (i % 5 == 0){
+      fizzBuzzResult += `${i} ${even5Text}`;
+    } else if (i % 3 == 0){
+      fizzBuzzResult += `${i} ${even3Text}`;
+    }else fizzBuzzResult += `${i}`;
+  if (i !== inputNumber){
+    fizzBuzzResult += '\n'; // пока что другого варианта не придумал как убрать лишнюю строку
+  };
+  }
 export { fizzBuzzResult };
