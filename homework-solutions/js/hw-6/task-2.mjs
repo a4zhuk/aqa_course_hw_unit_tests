@@ -15,29 +15,20 @@
 const competitorPizzas = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
 const myPizzasT1 = ['Peperoni', 'Margherita', 'Diablo', 'Vegetarian'];
 const myPizzasT2 = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
+const competitorPizzasToLowerCase = competitorPizzas.map(word => word.toLowerCase())
 let resultUnique =[];
 let resultNull;
 
+
 for(let myPizzas of myPizzasT1){
-  if (!(competitorPizzas.includes(myPizzas[0].toLocaleLowerCase() + myPizzas.slice(1)) || competitorPizzas.includes(myPizzas[0].toUpperCase() + myPizzas.slice(1)))){
+  if (!competitorPizzasToLowerCase.includes(myPizzas.toLowerCase())){
+    resultUnique.push(myPizzas);
+  }
+};
+for(let myPizzas of myPizzasT2){
+  if (!competitorPizzasToLowerCase.includes(myPizzas.toLowerCase())){
     resultUnique.push(myPizzas);
   } else resultNull = null;
 };
+console.log(resultNull, resultUnique)
 export { resultNull, resultUnique };
-
-//предполложу, что можно использваоть такой вариант если null нам надо сетать, только в тех случаях когда у нас вообще нет уникальных пицц
-const competitorPizzas1 = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
-const myPizzasT3 = ['Peperoni', 'Margherita', 'Diablo', 'Vegetarian'];
-const myPizzasT4 = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
-let resultUnique1 =[];
-let resultNull1;
-
-for(let myPizzas of myPizzasT3){
-  if (!(competitorPizzas1.includes(myPizzas[0].toLocaleLowerCase() + myPizzas.slice(1)) || competitorPizzas1.includes(myPizzas[0].toUpperCase() + myPizzas.slice(1)))){
-    resultUnique1.push(myPizzas);
-  }
-};
-if (!resultUnique1.length){
-  resultNull1 = null;
-}
-console.log(resultUnique1,resultNull1)

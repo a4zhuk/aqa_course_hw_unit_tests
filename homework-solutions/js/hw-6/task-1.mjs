@@ -12,9 +12,7 @@ let arrWithNumbers = [1,2,3,4,5,6,7,8,9,10];
 for (let arrNumber of arrWithNumbers){
   if (arrNumber % 2 === 0){
     forOf.push(arrNumber ** 2);
-  } else if (arrNumber % 2 !== 0){
-    forOf.push(arrNumber ** 3);
-  }
+  } else {forOf.push(arrNumber ** 3);}
 };
 /*
 2. Методы массивов
