@@ -9,7 +9,12 @@
 */
 
 function digitalRoot(number) {
-  // Ваш код
+  let numberToStirng = String(number);
+  let numberArray = numberToStirng.split("")
+  let result = 0
+  for (let num of numberArray){
+    result+= +num
+  }
+  return result <= 9 ? result : digitalRoot(result)
 }
-
 export { digitalRoot };
