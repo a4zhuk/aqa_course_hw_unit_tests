@@ -9,8 +9,8 @@
 */
 
 function digitalRoot(number) {
-  let numberToStirng = String(number);
-  let numberArray = numberToStirng.split("")
+  const numberToStirng = String(number);
+  const numberArray = numberToStirng.split("")
   let result = 0
   for (let num of numberArray){
     result+= +num

@@ -5,13 +5,7 @@
 
 function isPalindrom(word) {
   let reversedWord
-  if (typeof word === "string"){
-    let wordArr = word.split("").reverse()
-    reversedWord = wordArr.join('').toLowerCase()
-    if(word.toLowerCase() === reversedWord){
-      return true
-    } else {return false}
-  } else {return false}
+  return typeof word === 'string' ? word.toLowerCase() === word.toLowerCase().split('').reverse().join('') : false;
 }
 
 /*
@@ -22,8 +16,8 @@ function isPalindrom(word) {
 */
 
 function findLongestWords(sentence) {
-  let result =[]
-  if (typeof sentence !== 'string' || sentence.length === 0){
+  const result =[]
+  if (typeof sentence !== 'string' || !sentence.trim().length){
   } else {
     let sentenceArray = sentence.split(" ")
     let sentenceLength = sentenceArray.map(number => number.length)
