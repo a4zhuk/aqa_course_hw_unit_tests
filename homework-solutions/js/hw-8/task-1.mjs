@@ -15,7 +15,11 @@
 const numbers = [7, 8, 2, 30, 85, 95, 77, 94, 37, 31];
 
 let forEach= [];
-numbers.forEach((num) => num % 3 === 0 ? forEach.push(num) : false);
+numbers.forEach((num) => {
+   if (num % 3 === 0) {
+       forEach.push(num)
+      }
+   });
 let map = numbers.map( num => num - numbers.length);
 let filter = numbers.filter((num, i, arr) => num > arr[i - 1]);
 let find = numbers.find((num, i) => i === num);
