@@ -26,13 +26,13 @@ function getCharactersByAge(minAge) {
   return characters.filter((obj) => obj["age"] >= minAge);
 }; 
 function updateCharacter(name, newCharacter) {
-  if (getCharacter(name) === undefined) throw new Error ("Invalid input")
+  if (!getCharacter(name)) throw new Error ("Invalid input")
   characters[characters.indexOf(getCharacter(name))] = newCharacter;
   return characters;
 };
 
 function removeCharacter(name) {
-  if (getCharacter(name) === undefined) throw new Error ("Invalid input")
+  if (!getCharacter(name)) throw new Error ("Invalid input")
   characters.splice(characters.findIndex(value => value.name === name), 1);
   return characters;
 };
