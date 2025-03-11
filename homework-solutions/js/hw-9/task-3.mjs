@@ -87,7 +87,3 @@ function giveMeFive(obj = {}){
     giveMeFive({ Ihave: 'enough', money: 'to', buy: 'a', car: 'model' }),
   );    // ["Ihave","money","model"]
   console.log(giveMeFive({ Pears: 'than', apple: 'sweet' }));    //["Pears","apple","sweet"])
-
-
-  let a ={ Our: 'earth', is: 'a', beautyful: 'world' }
-  console.log(Object.values(a))
