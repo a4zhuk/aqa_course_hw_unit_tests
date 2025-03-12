@@ -38,7 +38,8 @@ function strCount(obj ={}){
         for (let value of obj[key]) {
          typeof value === "string" ? counter += 1 : value
         }
-      } else {for (let key1 in obj[key]){
+      } else {
+       for (let key1 in obj[key]){
         typeof obj[key][key1] === "string"
         counter +=1
       }
