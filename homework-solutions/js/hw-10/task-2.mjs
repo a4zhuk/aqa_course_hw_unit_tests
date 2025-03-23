@@ -7,8 +7,11 @@
   Ожидается: { 1: 1, 2: 2, 3: 1, 4: 3, 5: 1 }
 */
 
-function countOccurrences(arr) {
-  // ваш код
+function countOccurrences(arr =[]) {
+  const newObj = {};
+  for (let num of arr){
+    newObj[num] = arr.filter(value => value === num).reduce(amount => amount+= 1, 0);
+  }
+  return newObj;
 }
-
 export { countOccurrences };
