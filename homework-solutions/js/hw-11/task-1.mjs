@@ -67,8 +67,7 @@ class Company {
     this._title = value
   }
   set phone(value){
-    if (!value) throw new Error ('phone cannot be empty') 
-    if (typeof value !== 'number') throw new Error ("invalid phone format");
+    if (!value) throw new Error ('phone cannot be empty')
     this._phone = value
   }
   set address(value){
