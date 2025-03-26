@@ -4,7 +4,7 @@ class Employee {
     this.firstName = firstName
     this.lastName = lastName
     this.profession = profession
-    this.salary = salary
+    this.#salary = salary
   }
   get firstName(){
     return this._firstName
@@ -16,7 +16,7 @@ class Employee {
     return this._profession
   }
   get salary(){
-    return this._salary
+    return this.#salary
   }
   getFullName(){
     return `${this.firstName} ${this.lastName}`
@@ -58,16 +58,16 @@ class Employee {
     if (value < 0 || value >= 10000) throw new Error ('salary cannot be negative or gte 10000')
     if (typeof value !== 'number') throw new Error ("invalid salary format");
     
-    this._salary = value
+    this.#salary = value
   }
 }
 class Company {
   #employees
-  constructor(title, phone, address, employees =[]){
+  constructor(title, phone, address){
     this.title = title
     this.phone = phone
     this.address = address,
-    this.employees = employees
+    this.#employees = []
   }
   get title(){
     return this._title
@@ -85,7 +85,6 @@ class Company {
   }
   set phone(value){
     if (!value) throw new Error ('phone cannot be empty') 
-    if (typeof value !== 'number') throw new Error ("invalid phone format");
     this._phone = value
   }
   set address(value){
@@ -95,33 +94,31 @@ class Company {
   }
   addEmployee(employee){
   if (!(employee instanceof Employee)) throw new Error ("Error")
-  this.employees.push(employee)
+  this.#employees.push(employee)
   }
   getEmployees(){
-    return this.employees
+    return this.#employees
   }
   getInfo(){
-    return `Компания: ${this.title}\nАдрес: ${this.address}\nКоличество сотрудников: ${this.employees.length}`
+    return `Компания: ${this.title}\nАдрес: ${this.address}\nКоличество сотрудников: ${this.#employees.length}`
   }
   findEmployeeByName(firstName){
     if(!firstName) throw new Error ('firsName cannot be empty')
-    let result = this.employees.find(employee => employee.firstName === firstName)
-    if (result.length === 0) throw new Error ('Emploee wasn\'t found')
+    let result = this.#employees.find(employee => employee.firstName === firstName)
+    if (!result) throw new Error ('Emploee wasn\'t found')
     return result
   }
   removeEmployee(firstName){
     if(!firstName) throw new Error ('firsName cannot be empty')
-    if (this.#getEmployeeIndex(firstName) < 0) throw new Error ('Emploee wasn\'t found')
-    this.employees.splice(this.#getEmployeeIndex(firstName), 1)
+    let index = this.#getEmployeeIndex(firstName)
+    if (index < 0) throw new Error ('Emploee wasn\'t found')
+    this.#employees.splice(index, 1)
   }
   #getEmployeeIndex(firstName){
-    return this.employees.findIndex(value => value.firstName === firstName)
+    return this.#employees.findIndex(value => value.firstName === firstName)
   }
   getTotalSalary(){
-    return this.employees.reduce((amount, employee) => amount + employee.salary, 0) // тут на тестах падает ошибка хотя при проверках все ок 
+    return this.#employees.reduce((amount, employee) => amount + employee.salary, 0)
   }
 }
-
-const company = new Company('Tech Corp', 123456, 'Main Street');
-console.log(typeof(company.getTotalSalary()))
 export { Employee, Company };

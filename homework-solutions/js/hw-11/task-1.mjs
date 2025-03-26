@@ -4,7 +4,7 @@ class Employee {
     this.firstName = firstName
     this.lastName = lastName
     this.profession = profession
-    this.salary = salary
+    this.#salary = salary
   }
   get firstName(){
     return this._firstName
@@ -16,7 +16,7 @@ class Employee {
     return this._profession
   }
   get salary(){
-    return this._salary
+    return this.#salary
   }
   getFullName(){
     return `${this.firstName} ${this.lastName}`
@@ -41,7 +41,7 @@ class Employee {
     if (value < 0) throw new Error ('salary cannot be negative')
     if (typeof value !== 'number') throw new Error ("invalid salary format");
     
-    this._salary = value
+    this.#salary = value
   }
 }
 class Company {
@@ -50,7 +50,7 @@ class Company {
     this.title = title
     this.phone = phone
     this.address = address,
-    this.employees = employees
+    this.#employees = Array.isArray(employees) ? employees : []
   }
   get title(){
     return this._title
@@ -78,14 +78,13 @@ class Company {
   }
   addEmployee(employee){
   if (!(employee instanceof Employee)) throw new Error ("Error")
-  this.employees.push(employee)
+  this.#employees.push(employee)
   }
   getEmployees(){
-    return this.employees
+    return this.#employees
   }
   getInfo(){
-    return `Компания: ${this.title}\nАдрес: ${this.address}\nКоличество сотрудников: ${this.employees.length}`
+    return `Компания: ${this.title}\nАдрес: ${this.address}\nКоличество сотрудников: ${this.#employees.length}`
   }
 }
-
 export { Employee, Company };
