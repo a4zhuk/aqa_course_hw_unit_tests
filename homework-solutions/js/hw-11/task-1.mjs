@@ -46,11 +46,11 @@ class Employee {
 }
 class Company {
   #employees
-  constructor(title, phone, address, employees =[]){
+  constructor(title, phone, address){
     this.title = title
     this.phone = phone
     this.address = address,
-    this.#employees = Array.isArray(employees) ? employees : []
+    this.#employees = []
   }
   get title(){
     return this._title
@@ -67,8 +67,7 @@ class Company {
     this._title = value
   }
   set phone(value){
-    if (!value) throw new Error ('phone cannot be empty') 
-    if (typeof value !== 'number') throw new Error ("invalid phone format");
+    if (!value) throw new Error ('phone cannot be empty')
     this._phone = value
   }
   set address(value){
