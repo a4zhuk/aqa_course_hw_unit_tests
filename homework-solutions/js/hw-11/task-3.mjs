@@ -54,12 +54,7 @@ class Developer extends Employee {
     this.programmingLanguages = programmingLanguages
   }
   get _programmingLanguages(){
-    return this._programmingLanguages
-  }
-  set _programmingLanguages(language =[]){
-    if (!language) throw new Error ('Programming language cannot be empty')
-    if (typeof language !== 'string') throw new Error ('Invalid format')
-    this._programmingLanguages = language
+    return this.programmingLanguages
   }
   addProgrammingLanguage(language) {
     if (!language) throw new Error ('Programming language cannot be empty')
