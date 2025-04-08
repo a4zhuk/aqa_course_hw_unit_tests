@@ -17,11 +17,11 @@ try {
       },
       body: JSON.stringify(data)
    }))
-   if(!response.status === 201) throw new Error ('Error is not 201');
+   if(!response.status === 201) throw new Error (`Status code = ${response.status}`);
    const responseData = await response.json();
    for (const value in data){
       if (responseData[value] !== data[value]){
-         throw new Error(`The following value - ${value} is incorrect`);
+         throw new Error(`The following value - ${responseData[value]} is incorrect. Should be ${data[value]}`);
       }
    }
    return responseData;

@@ -11,11 +11,13 @@
   в консоль статус и результат каждого промиса через .then
 7. Повторите пункты 5 и 6 используя асинхронные функции с блоком try..catch 
 */
-
-function delayTwoSeconds (){
-  setTimeout(() => {console.log('Hello')}, 2000);
+function sayHello(){
+  setTimeout(() => console.log('Hello'), 2000);
+}
+function delayTwoSeconds (callback){
+  callback
 };
-delayTwoSeconds();
+delayTwoSeconds(sayHello());
 const newPromise = new Promise((resolve , reject) => {
   resolve(1);
 });
